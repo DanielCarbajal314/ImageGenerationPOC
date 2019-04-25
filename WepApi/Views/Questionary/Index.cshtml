@@ -1,0 +1,20 @@
+﻿@model IEnumerable<WepApi.Services.DTO.Response.QuestionNode> 
+@{Layout = null;}
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width" />
+</head>
+<body class="container">
+    <div >
+        <ul class="tree">
+            @foreach (var item in Model)
+            {
+                @Html.Partial("RenderQuestion", item);
+            }
+        </ul>
+    </div>
+</body>
+</html>

@@ -1,0 +1,16 @@
+﻿@model WepApi.Services.DTO.Response.QuestionNode
+@{Layout = null;}
+<li>
+    @Model.Question
+    <ul>
+        <li>
+            @Model.Answer
+            @if (Model.SubQuestionNode != null)
+            {
+            <ul>
+                @Html.Partial("RenderQuestion", Model.SubQuestionNode)
+            </ul>
+            }
+        </li>
+    </ul>
+</li>

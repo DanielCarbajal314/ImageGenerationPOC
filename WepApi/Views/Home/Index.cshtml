@@ -1,0 +1,38 @@
+﻿<div class="container" style="padding-top:10%;">
+    <button class="btn btn-primary" onclick="DownloadHtml()"> Test Html and CSS</button>
+    <button class="btn btn-primary" onclick="DownloadWord()"> Test Word</button>
+</div>
+
+
+<script src="~/Scripts/FileSaver.js"></script>
+<script>
+    function DownloadHtml() {
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                var blob = this.response;
+                saveAs(blob, 'questionaryFromHtmlAndCss.jpg');
+            }
+        }
+        xhr.open('GET', 'http://localhost:53269/api/Document/GetCssAndHTMLBasedImage');
+        xhr.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
+        xhr.responseType = 'blob';
+        xhr.send();
+    }
+
+    function DownloadWord() {
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                var blob = this.response;
+                saveAs(blob, 'questionaryFromWord.jpg');
+            }
+        }
+        xhr.open('GET', 'http://localhost:53269/api/Document/GetMsWordBasedImage');
+        xhr.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
+        xhr.responseType = 'blob';
+        xhr.send();
+    }
+
+    
+</script>
